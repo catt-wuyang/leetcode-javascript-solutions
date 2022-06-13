@@ -15,6 +15,12 @@
  * 输出：[0, 1]
  */
 
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
 /*
  * 暴力解法
  * 时间复杂度：O(N^2); 数组长度为 n，两个 for 循环，即 n*n
