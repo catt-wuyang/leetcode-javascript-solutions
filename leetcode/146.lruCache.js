@@ -36,7 +36,7 @@ LRUCache.prototype.get = function (key) {
   if (this.cache.has(key)) {
     let tmp = this.cache.get(key);
     this.cache.delete(key);
-    this.cache.set(key.tmp);
+    this.cache.set(key, tmp);
     return tmp;
   }
   return -1;
