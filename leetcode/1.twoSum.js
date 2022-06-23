@@ -62,3 +62,12 @@ const nums = [2, 11, 7, 15];
 const target = 9;
 twoSum(nums, target); // [0, 2]
 twoSumBetter(nums, target); // [2, 0]
+
+const ELEMENT = 1;
+const FUNCTIONAL_COMPONENT1 = 1 << 1;
+const STATEFUL_COMPONENT = 1 << 2;
+const TEXT_CHILDREN = 1 << 3;
+const ARRAY_CHILDREN = 1 << 4;
+const SLOTS_CHILDREN = 1 << 5;
+const TELEPORT = 1 << 6;
+const SUSPENSE = 1 << 7;
