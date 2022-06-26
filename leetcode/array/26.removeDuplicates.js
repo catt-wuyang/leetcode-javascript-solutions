@@ -34,22 +34,22 @@ const removeDuplicates = function (nums) {
  *
  * 更优解法 - 快慢指针、双指针
  *
- * [0,1,1,2,2,3,4] 设定 slow fast 两个快慢指针
- * fast 快指针，每次都往前走一步，如果快指针指向对应值和慢指针指向对应值不同，
- * 就先让 slow 往前走一步，然后设定当前 slow 指向的值为 fast 指向的值
- * 原理就是一直在根据 fast 来判断 slow 是否前进及值
- * return slow 索引+1 数组的长度，并且题目中提及不考虑后面塞什么值，不影响
+ * [0,1,1,2,2,3,4] 设定 slow fast 两个快慢指针都在1位置
+ * 遍历数组元素，fast 每次都往前走一步，判断 fast 和 fast-1 的值是否相同
+ * 相同 fast 就接着往前走，不同就将 fast位置的值提到前面 slow 位置处，slow 往前走一位
+ * fast 遍历到数组末尾时，slow 位置及之前的元素就都不是重复的了
+ * 最终返回 slow 即可，后面重复的元素忽略不计
  */
 const removeDuplicatesBetter = function (nums) {
   if (!nums.length) return 0;
 
-  let slow = 0;
-  let fast = 0;
+  let slow = 1;
+  let fast = 1;
 
   while (fast < nums.length) {
-    if (nums[fast] !== nums[slow]) {
-      slow++;
+    if (nums[fast] !== nums[fast - 1]) {
       nums[slow] = nums[fast];
+      slow++;
     }
     fast++;
   }

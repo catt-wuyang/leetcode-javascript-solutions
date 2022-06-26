@@ -42,7 +42,5 @@ const isValidBracket = function (s) {
     }
   }
 
-  if (!stack.length) {
-    return false;
-  }
+  return !stack.length;
 };
