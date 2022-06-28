@@ -3,14 +3,16 @@
  */
 
 const inorderTraversal = function (root) {
+  let ret = [];
+
   const dfs = function (root) {
     if (root === null) return;
+
     dfs(root.left);
     ret.push(root.val);
     dfs(root.right);
   };
 
-  let ret = [];
   dfs(root);
   return ret;
 };
