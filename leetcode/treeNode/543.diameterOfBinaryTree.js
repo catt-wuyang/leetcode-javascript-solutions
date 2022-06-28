@@ -8,7 +8,6 @@
  * 输入：[1,2,3,4,5,null,null]
  * 输出：3 最长路径[4,2,1,3] 或者是 [5,2,1,3]
  */
-
 const diameterOfBinaryTree = function (root) {
   let ret = 0;
 
