@@ -59,6 +59,11 @@ const distributeCookies = function (g, s) {
  * 另一角度看，找最优解的过程中，也有若干种编程的思路和写法，
  * 算法优化则是在这个过程中，不断搜寻复杂度尽可能小的解法，突破能力范围找到最优解
  */
+
+/**
+ * 先对 g s 排序，从后往前遍历 g，分饼干的逻辑是让尺寸最大的饼干，分给能够满足且需求最大的孩子
+ * 饼干正确分出去之后，ret+1 索引值-1 直到饼干都尝试分配出去
+ */
 const distributeCookiesBetter = function (g, s) {
   g = g.sort((a, b) => a - b);
   s = s.sort((a, b) => a - b);
