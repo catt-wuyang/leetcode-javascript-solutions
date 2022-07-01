@@ -57,3 +57,20 @@ const fibPolish = function (n) {
   }
   return cur;
 };
+
+/**
+ * 利用缓存存储结果，减少计算量
+ */
+const helper = function (list, n) {
+  if (n <= 1) return n;
+
+  if (list[n]) return list[n];
+
+  list[n] = helper(list, n - 1) + helper(list, n - 2);
+  return list[n];
+};
+
+const fibList = function (n) {
+  let list = [];
+  return helper(list, n);
+};
