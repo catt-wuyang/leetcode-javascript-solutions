@@ -57,6 +57,7 @@ const searchInsertSort = function (nums, target) {
  * 二分查找
  *
  * 时间复杂度也不太好，先考虑边缘情况，再利用二分查找返回对应的索引位置
+ * 重点在于理解二分查找的应用
  */
 const binarySearchInsert = function (nums, target) {
   if (target < nums[0]) return 0;
@@ -66,7 +67,8 @@ const binarySearchInsert = function (nums, target) {
   let right = nums.length - 1;
 
   while (left <= right) {
-    let mid = Math.round((left + right) / 2);
+    // 等价于 let mid = Math.round((left + right) / 2);
+    let mid = (left + right) >> 1;
     if (nums[mid] === target) {
       return mid;
     } else if (nums[mid] < target) {
@@ -77,3 +79,7 @@ const binarySearchInsert = function (nums, target) {
   }
   return left;
 };
+
+const nums = [1, 3, 5, 6],
+  target = 2;
+binarySearchInsert(nums, target);
