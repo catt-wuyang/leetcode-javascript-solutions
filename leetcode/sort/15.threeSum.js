@@ -19,7 +19,7 @@
  * [-1,0,1,2,-1,-4]
  */
 const threeSum = function (nums) {
-  let list = []; // 最终返回结果
+  let ret = []; // 最终返回结果
 
   nums.sort((a, b) => a - b); // 先对数组进行排序[-4,-1,-1,0,1,2]
 
@@ -40,7 +40,7 @@ const threeSum = function (nums) {
         right--;
       } else if (nums[i] + nums[left] + nums[right] === 0) {
         // 恰好找到了 left right i 对应的元素和为0，就塞进list里
-        list.push([nums[i], nums[left], nums[right]]);
+        ret.push([nums[i], nums[left], nums[right]]);
         // 由于数组已排序，相同的数字会在一起，所以要判断
         while (nums[left] === nums[left + 1]) {
           left++;
@@ -59,5 +59,5 @@ const threeSum = function (nums) {
       }
     }
   }
-  return list;
+  return ret;
 };
