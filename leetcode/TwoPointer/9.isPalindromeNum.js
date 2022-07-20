@@ -13,7 +13,7 @@
  */
 
 /**
- * 双指针
+ * 双指针 - 左右指针
  *
  * 1.先把整数变成字符串，拆分成数组
  * 2.左右指针遍历，比较是否相等
@@ -37,7 +37,7 @@ const isPalindrome = function (x) {
 /**
  * 二分思想
  */
-const isPalindromeOther = function (x) {
+const isPalindromeII = function (x) {
   x = x.toString();
 
   for (let i = 0; i < x.length >> 1; i++) {

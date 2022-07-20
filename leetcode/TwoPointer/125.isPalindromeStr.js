@@ -14,11 +14,11 @@
  */
 
 /**
- * 双指针
+ * 双指针 - 左右指针
  *
  * 对字符串进行过滤后再验证
  */
-const isPalindromeII = function (s) {
+const isPalindrome = function (s) {
   s = [...s.replace(/[^0-9a-zA-Z]/g, "").toLowerCase()];
 
   let left = 0;

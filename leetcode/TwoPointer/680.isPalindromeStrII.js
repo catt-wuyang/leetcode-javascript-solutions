@@ -15,7 +15,7 @@
  */
 
 /**
- * 双指针
+ * 双指针 - 左右指针
  *
  * 一旦左右指针字符不等，判断删掉一个字符后是否为回文
  * 要么删左字符 [left+1,right]
@@ -33,7 +33,7 @@ const validPalindrome = function (str, left, right) {
   return true;
 };
 
-const isPalindromeIII = function (s) {
+const isPalindrome = function (s) {
   let left = 0;
   let right = s.length - 1;
   while (left < right) {
