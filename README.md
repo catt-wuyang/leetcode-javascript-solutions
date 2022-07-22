@@ -1,7 +1,5 @@
 # leetcode-javascript-solutions
 
-leetcode
-
 - TreeNode 树
 - LinkNode 链表
 - Array 数组

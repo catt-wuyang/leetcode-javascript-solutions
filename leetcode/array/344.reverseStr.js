@@ -35,4 +35,5 @@ const reverseStrBetter = function (nums) {
     left++;
     right--;
   }
+  return nums;
 };
