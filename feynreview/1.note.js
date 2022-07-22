@@ -1,135 +1,113 @@
 /**
- * Monday, June, 13
- * 1. 数组和链表的概念、区别
- * 2. 链表的实现
- * 3. leetcode 1.两数之和 203.删除链表指定元素
+ * 1.二叉树的中序遍历
  */
-
-/**
- * 数组：元素是有序的，可以通过索引 arr[2] 随机访问
- * 链表：元素是无序的，不能随机访问，要想查找某个值，必须从链表的第一个节点开始一个个查找
- * 区别：是否有序，各自有各自的特点，使用时如果查找的较多使用数组，如果增删操作较多用链表，性能更好
- */
-
-/**
- * 链表实现
- * 形式：1=>2=>3=>4
- * 最小单元：节点，有两个属性，一个值val，一个指向next
- * 链表有一个属性：头节点head，两个方法 append 插入，print 打印
- */
-
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
-  }
-}
-
-class LinkNodeList {
-  constructor() {
-    this.head = null;
-    this.length = 0;
-  }
-
-  append(val) {
-    const node = new Node(val);
-    let p = this.head;
-    if (this.head) {
-      while (p.next) {
-        p = p.next;
-      }
-      p.next = node;
-    } else {
-      this.head = node;
+const preoderTraveral = function (root) {
+  let ret = [];
+  const dfs = function (root) {
+    if (root === null) {
+      return;
     }
-    this.length++;
-  }
 
-  print() {
-    let p = this.head;
-    let ret = "";
-    if (this.head) {
-      do {
-        ret += `${p.val}=>`;
-        p = p.next;
-      } while (p.next);
-      ret += p.val;
-      console.log(ret);
-    } else {
-      console.log("empty");
-    }
-  }
-}
+    dfs(root.left);
+    ret.push(root.val);
+    dfs(root.right);
+  };
 
-const nodeList = new LinkNodeList();
-
-nodeList.append(1);
-nodeList.append(2);
-nodeList.append(3);
-nodeList.append(4);
-
-console.log(nodeList.print());
-console.log(nodeList.length);
-
-/**
- * leetcode 1.两数之和
- */
-
-const twoSum = function (nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 0; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target && i !== j) {
-        return [i, j];
-      }
-    }
-  }
+  dfs(root);
+  return ret;
 };
 
-twoSum([2, 7, 11, 15, 4], 18); // [1, 2]
+/**
+ * 2.翻转二叉树
+ */
+const invertTree = function (root) {
+  if (root === null) {
+    return;
+  }
 
-const twoSumBetter = function (nums, target) {
+  [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+  return root;
+};
+
+/**
+ * 3.最长递增子序列
+ */
+const lengthOfLIS = function (nums) {
+  let len = nums.length;
+  if (!len) {
+    return 0;
+  }
+
+  let ret = [nums[0]];
+  for (let i = 0; i < len; i++) {
+    if (nums[i] > ret[ret.length - 1]) {
+      ret.push(nums[i]);
+    } else {
+      let left = 0;
+      let right = ret.length - 1;
+      while (left < right) {
+        let mid = [left + right] >> 1;
+        if (ret[mid] < nums[i]) {
+          left = mid + 1;
+        } else {
+          right = mid;
+        }
+      }
+      ret[left] = nums[i];
+    }
+  }
+
+  return ret.length;
+};
+
+/**
+ * 4.两数之和
+ */
+const twoSum = function (nums, target) {
   let obj = {};
   for (let i = 0; i < nums.length; i++) {
     let num = nums[i];
-    let n = target - num;
+    let match = target - num;
     if (num in obj) {
-      return [obj[num], i];
+      return [i, obj[num]];
     } else {
-      obj[n] = i;
+      obj[match] = i;
     }
   }
 };
-
-twoSumBetter([2, 7, 11, 15, 4], 18);
 
 /**
- * leetcode 203.删除链表指定元素
+ * 5.三数之和
  */
-const removeNodeListElements = function (head, val) {
-  if (head === null) {
-    return head;
-  }
+const threeSum = function (nums) {
+  let ret = [];
+  nums.sort((a, b) => a - b);
 
-  head.next = removeNodeListElements(head.next, val);
-  return head.val === val ? head.next : head;
-};
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === nums[i - 1]) {
+      continue;
+    }
 
-removeNodeListElements([1, 2, 4, 5, 6, 4, 7], 4); // [1,2,5,6,7]
-
-const removeNodeListElementsBetter = function (head, val) {
-  let alpha = {
-    // val: "",
-    next: head,
-  };
-
-  let p = alpha;
-  while (p.next) {
-    // this not clear here
-    if (p.next.val === val) {
-      p.next = p.next.next;
-    } else {
-      p = p.next;
+    let left = i + 1;
+    let right = nums.length - 1;
+    while (left < right) {
+      if (nums[i] + nums[left] + nums[right] < 0) {
+        left++;
+      } else if (nums[i] + nums[left] + nums[right] === 0) {
+        ret.push([nums[i], nums[left], nums[right]]);
+        left++;
+        right--;
+        while (nums[left] === nums[left + 1]) {
+          left++;
+        }
+        while (nums[right] === nums[right - 1]) {
+          right--;
+        }
+      } else {
+        right++;
+      }
     }
   }
-  return alpha.next;
+
+  return ret;
 };
