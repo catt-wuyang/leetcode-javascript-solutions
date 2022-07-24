@@ -3,9 +3,7 @@
  *
  * 描述：给定一个整数数组 nums 和一个整数目标值 target，
  * 请你在该数组中找出和为目标值 target 的两个整数，
- * 并返回它们的数组下标
- *
- * 提示：假设只存在一个有效答案，且数组中同一个元素在答案中不能重复出现
+ * 并返回它们的数组下标，假设只存在一个有效答案，且数组中同一个元素在答案中不能重复出现
  *
  * 示例：
  * 输入：nums = [2, 11, 7, 15], target = 9
@@ -23,6 +21,7 @@
 
 /*
  * 暴力解法
+ *
  * 时间复杂度：O(N^2); 数组长度为 n，两个 for 循环，即 n*n
  * 空间复杂度：O(1); 程序中有 i，j 两个变量与 n 无关
  */
@@ -36,7 +35,9 @@ const twoSum = function (nums, target) {
   }
 };
 
-/* 更优解法
+/*
+ * 更优解法
+ *
  * 时间复杂度：O(N); 数组长度为 n，一个 for 循环， 即 n
  * 空间复杂度：O(N); 创建 obj 最多可能存储 n 各变量，即 n
  * 解题思路：根据需求匹配逻辑，构建一个 obj 需求记录本；循环遍历数组每一项
@@ -62,12 +63,3 @@ const nums = [2, 11, 7, 15];
 const target = 9;
 twoSum(nums, target); // [0, 2]
 twoSumBetter(nums, target); // [2, 0]
-
-const ELEMENT = 1;
-const FUNCTIONAL_COMPONENT1 = 1 << 1;
-const STATEFUL_COMPONENT = 1 << 2;
-const TEXT_CHILDREN = 1 << 3;
-const ARRAY_CHILDREN = 1 << 4;
-const SLOTS_CHILDREN = 1 << 5;
-const TELEPORT = 1 << 6;
-const SUSPENSE = 1 << 7;
