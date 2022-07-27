@@ -20,4 +20,4 @@ const inorderTraversal = function (root) {
 
   dfs(root);
   return ret;
-};
+}; 
