@@ -38,4 +38,19 @@ const linkNodeToBST = function (head) {
  * 根据数组转换树的思想，找链表的中间节点，作为二叉搜索树的根节点
  * 快慢指针找中间节点mid
  */
-const linkNodeToBSTBetter = function (head) {};
+const linkNodeToBSTBetter = function (head) {
+  const dfs = function (head, end) {
+    if (head === end) return null;
+    let slow = head;
+    let fast = head;
+    while (fast !== end && fast.next !== end) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    let root = new TreeNode(slow.val);
+    root.left = dfs(head, slow);
+    root.right = dfs(slow.next, end);
+    return root;
+  };
+  return dfs(head, null);
+};
