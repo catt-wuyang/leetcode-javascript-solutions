@@ -25,3 +25,17 @@ const countNode = function (root) {
   dfs(root);
   return ret.length;
 };
+
+/**
+ * 优化
+ */
+const countNodeBetter = function (root) {
+  const dfs = function (root) {
+    if (root === null) return 0;
+
+    let leftCount = dfs(root.left);
+    let rightCount = dfs(root.right);
+    return leftCount + rightCount + 1;
+  };
+  return dfs(root);
+};

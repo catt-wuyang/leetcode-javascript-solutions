@@ -14,10 +14,11 @@
  */
 const allPaths = function (root) {
   let ret = [];
-  if (root === null) return ret;
 
   const dfs = function (root, path) {
-    if (!root.left && !root.right) {
+    if (root === null) return ret;
+    if (root.left === null && root.right === null) {
+      // 遍历到最底层的叶子节点了，开始填充返回结果
       ret.push(path.join("->"));
     }
 
