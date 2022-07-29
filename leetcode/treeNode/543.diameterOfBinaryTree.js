@@ -12,7 +12,7 @@ const diameterOfBinaryTree = function (root) {
   let ret = 0;
 
   const dfs = function (root) {
-    if (root === null) return 0;
+    if (root === null) return ret;
 
     let left = dfs(root.left);
     let right = dfs(root.right);
