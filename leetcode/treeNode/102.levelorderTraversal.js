@@ -24,7 +24,6 @@ const levelorderTraversal = function (root) {
 
   let queue = [];
   queue.push(root);
-
   while (queue.length) {
     let len = queue.length;
     let curLevel = [];

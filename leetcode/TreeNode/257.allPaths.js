@@ -14,7 +14,6 @@
  */
 const allPaths = function (root) {
   let ret = [];
-
   const dfs = function (root, path) {
     if (root === null) return ret;
     if (root.left === null && root.right === null) {

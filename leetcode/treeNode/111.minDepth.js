@@ -43,7 +43,6 @@ const minDepthBetter = function (root) {
 
   let queue = [root];
   let depth = 1;
-
   while (queue.length) {
     let len = queue.length;
     while (len--) {

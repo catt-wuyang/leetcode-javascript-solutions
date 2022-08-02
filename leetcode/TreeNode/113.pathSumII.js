@@ -26,9 +26,8 @@ const pathSumII = function (root, targetSum) {
       }
     }
 
-    if (root.left)
-      dfs(root.left, [...path, root.left.val], sum + root.left.val);
-    if (root.right)
+    root.left && dfs(root.left, [...path, root.left.val], sum + root.left.val);
+    root.right &&
       dfs(root.right, [...path, root.right.val], sum + root.right.val);
   };
 
