@@ -5,9 +5,6 @@
  * 要求：返回部分仅保留整数部分，舍去小数部分
  *
  * 示例：
- * 输入：x = 4
- * 输出：2
- *
  * 输入：x = 8
  * 输出：2
  *
@@ -19,7 +16,11 @@
  */
 
 /**
- * 二分查找思想
+ * 二分查找
+ *
+ * 小于2直接返回x
+ * 整数的平方根一定在(1,x)范围内的
+ * mid*mid > x 且 (mid+1)*(mid+1) < x 那么 mid 就是 x 的平方根
  */
 const squareRoot = function (x) {
   if (x < 2) return x;
@@ -37,4 +38,22 @@ const squareRoot = function (x) {
     }
   }
   return right;
+};
+
+const squareRootEasyUS = function (x) {
+  if (x < 2) return x;
+
+  let left = 1;
+  let right = x >> 1;
+  while (left <= right) {
+    let mid = (right + left) >> 1;
+    if (mid * mid <= x) {
+      if ((mid + 1) * (mid + 1) > x) {
+        return mid;
+      }
+      left = mid + 1;
+    } else if (mid * mid > x) {
+      right = mid - 1;
+    }
+  }
 };

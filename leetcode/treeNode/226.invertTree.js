@@ -9,16 +9,23 @@
  */
 
 /**
- * 递归解法
- *
- * 1. 先找递归的子问题，左右节点翻转，互换位置
- * 2. 找到终止条件
+ * [a,b] = [b,a]
  */
 const invertTree = function (root) {
   if (root === null) {
-    return root;
+    return null;
   }
 
   [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+  return root;
+};
+
+const invertTreeBetter = function (root) {
+  if (root === null) return root;
+
+  let left = invertTree(root.left);
+  let right = invertTree(root.right);
+  root.left = right;
+  root.right = left;
   return root;
 };

@@ -58,3 +58,21 @@ const intersectioOther = function (nums1, nums2) {
   const set2 = new Set(nums2);
   return setIntersection(set1, set2);
 };
+
+/**
+ * 暴力解法
+ *
+ * 双层循环，利用 set 排重
+ * 时间复杂度O(n*n)
+ */
+const intersectionSet = function (nums1, nums2) {
+  let set = new Set();
+  for (let i = 0; i < nums1.length; i++) {
+    for (let j = 0; j < nums2.length; j++) {
+      if (nums1[i] === nums2[j]) {
+        set.add(nums1[i]);
+      }
+    }
+  }
+  return [...set];
+};

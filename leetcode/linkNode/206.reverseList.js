@@ -26,9 +26,7 @@
  * 最终返回头节点，即反转后的链表
  */
 const reverseList = function (head) {
-  if (!head || !head.next) {
-    return head;
-  }
+  if (head === null) return head;
 
   let prev = null;
   let cur = head;
