@@ -1,7 +1,7 @@
 /**
  * 35.搜索插入位置
  *
- * 描述：给定一个数组 nums 和一个目标值 target，要求在数组中找到目标值，并返回它对应的索引
+ * 描述：给定一个排序数组 nums 和一个目标值 target，要求在数组中找到目标值，并返回它对应的索引
  * 如果数组中不存在目标值，则根据排序插入的位置，返回它对应的索引
  *
  * 示例：
@@ -32,23 +32,6 @@ const searchInsert = function (nums, target) {
       (target > nums[i] && i === nums.length - 1)
     ) {
       return i + 1;
-    }
-  }
-};
-
-/**
- * 排序解法 - 先插入排序，查找索引
- *
- * 先将 target 插入到数组末尾，再整体排序
- * 再查找 target 对应的索引值即可，但时间复杂度递增
- */
-const searchInsertSort = function (nums, target) {
-  nums.push(target);
-  nums.sort((a, b) => a - b);
-
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === target) {
-      return i;
     }
   }
 };

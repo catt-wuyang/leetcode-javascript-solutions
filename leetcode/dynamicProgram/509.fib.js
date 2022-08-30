@@ -30,12 +30,12 @@ const fib = function (n) {
  * 动态规划
  *
  * 创建 let dp = [0,1] 确定初始值
- * 确定递推公式
+ * 递推公式，提示需要取模
  */
 const fibBetter = function (n) {
   let dp = [0, 1];
   for (let i = 2; i <= n; i++) {
-    dp[i] = dp[i - 1] + dp[i - 2];
+    dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
   }
   return dp[n];
 };

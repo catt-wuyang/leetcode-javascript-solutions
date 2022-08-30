@@ -34,7 +34,7 @@ const flattenRe = function (arr) {
  * ES6 扩展运算符
  *
  * 判断数组里元素是否还有数组，返回 true 则循环继续，直到最后一个数组被拆解
- * 是则不断更新 arr
+ * 是则不断更新 arr 
  */
 const flattenSpo = function (arr) {
   while (arr.some((n) => Array.isArray(n))) {
